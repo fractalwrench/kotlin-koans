@@ -6,11 +6,10 @@ fun example4() {
 }
 
 fun Shop.getCustomerWithMaximumNumberOfOrders(): Customer? {
-    // Return a customer whose order count is the highest among all customers
-    todoCollectionTask()
+    return customers.maxBy { it.orders.count() }
 }
 
 fun Customer.getMostExpensiveOrderedProduct(): Product? {
+    return orders.flatMap(Order::products).maxBy(Product::price)
     // Return the most expensive product which has been ordered
-    todoCollectionTask()
 }
